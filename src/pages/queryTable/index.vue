@@ -23,4 +23,8 @@ export default {
 </script>
 
 <style  scoped>
+.grid-content{background: #fff;padding: 10px;text-align: right}
+.el-input{
+  width: 220px;
+}
 </style>

@@ -63,7 +63,5 @@ export default {
 </script>
 
 <style>
-.el-tabs .el-tabs__header{
-    background: #fff !important;
-}
+
 </style>

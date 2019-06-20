@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Query class="query"></Query>
     <el-table :data="userList" style="width: 100%">
       <el-table-column label="用户ID" width="80">
         <template slot-scope="scope">
@@ -47,13 +48,14 @@
         </template>
       </el-table-column>
     </el-table>
-    <Pagination :total="total"></Pagination>
+    <Pagination :total="total" class="pagination"></Pagination>
   </div>
 </template>
 
 <script>
 import User from "@/data/users";
 import Pagination from "@/pages/main/pagination";
+import Query from '@/pages/queryTable'
 export default {
   name: "user",
   data() {
@@ -65,7 +67,8 @@ export default {
     };
   },
   components: {
-    Pagination
+    Pagination,
+    Query
   },
   methods: {
     refashTable(pageSize, currentPage) {
@@ -91,4 +94,12 @@ export default {
 </script>
 
 <style lang="" scoped>
+.query{
+  margin-bottom: 10px
+}
+.pagination{
+  background: #fff;
+  line-height: 45px;
+  padding: 15px 30px
+}
 </style>

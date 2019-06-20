@@ -7,7 +7,7 @@
           <Left></Left>
         </el-aside>
         <el-main>
-          <NavBar></NavBar>
+          <NavBar class="navbar"></NavBar>
           <Main class="content"></Main>
         </el-main>
       </el-container>
@@ -53,7 +53,6 @@ export default {
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  text-align: center;
   min-height: calc(100vh - 60px);
   padding: 0px
 }
@@ -63,5 +62,8 @@ export default {
 
 body > .el-container {
   margin-bottom: 40px;
+}
+.navbar{
+  background: #fff
 }
 </style>

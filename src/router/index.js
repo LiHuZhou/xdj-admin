@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Routers from './router'
 Vue.use(Router)
 
-export default new Router({
-  routes:Routers
+const router = new Router({
+  routes: Routers
 })
+
+export default router;

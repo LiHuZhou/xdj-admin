@@ -10,9 +10,10 @@ const tab = {
       state.openNav.push(navItem);
     },
     SET_CLOSE_NAV: (state, index) => {
-      state.openNav.splice(index, 1);
+     state.openNav=state.openNav.filter(tab => tab.name !== index);
     },
     SET_NAV_Index: (state, Index) => {
+          console.log('SET_NAV_Index',Index);
       state.navIndex = Index;
     },
     SET_Router_State: (state, routerState) => {

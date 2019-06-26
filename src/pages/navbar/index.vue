@@ -8,8 +8,8 @@
       @tab-click="tabClick($event)"
     >
       <el-tab-pane
-        v-for="(item,index) in editableTabs"
-        :key="index"
+        v-for="(item) in editableTabs"
+        :key="item.name"
         :label="item.title"
         :name="item.name"
       ></el-tab-pane>
@@ -31,24 +31,25 @@ export default {
   },
   methods: {
     removeTab(targetName) {
-      this.editableTabs.forEach((element, index) => {
-        if (this.editableTabs.length == 1) {
-          this.$store.dispatch("tab/delNavFun", index);
-          this.$router.push({ name: "admin" });
-        } else if (this.editableTabs.length > 1) {
-            // if(targetName==element.name){
-            //    if()
-            // }
-          // if (targetName == element.name) {
-          //   this.$store.dispatch("tab/delNavFun", index);
-          //   if (index == this.editableTabs.length - 1) {
-          //     //  this.$router.push({ name: this.editableTabs[index - 1].name });
-          //   } else {
-          //     //this.$router.push({ name: this.editableTabs[index + 1].name });
-          //   }
-          // }
-        }
-      });
+      let tabs = this.editableTabs;
+      let activeName = this.navIndex;
+      if (activeName === targetName) {
+        tabs.forEach((tab, index) => {
+          if (tab.name === targetName) {
+            let nextTab = tabs[index + 1] || tabs[index - 1];
+            if (nextTab) {
+              activeName = nextTab.name;
+            }
+          }
+        });
+      }
+      this.$store.commit("tab/SET_NAV_Index", activeName);
+      this.$store.commit("tab/SET_CLOSE_NAV", targetName);
+      if (activeName === targetName) {
+        this.$router.push({ name: "admin" });
+      } else {
+        this.$router.push({ name: activeName });
+      }
     },
     tabClick(e) {
       this.$router.push({ name: e.$options.propsData.name });

@@ -4,7 +4,7 @@
     <el-table :data="userList" style="width: 100%">
       <el-table-column label="用户ID" width="80">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row._uid }}</span>
+          <span>{{ scope.row._uid }}</span>
         </template>
       </el-table-column>
       <el-table-column label="姓名" width="120">
@@ -21,25 +21,25 @@
 
       <el-table-column label="用户名" width="120">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.nickName }}</span>
+          <span>{{ scope.row.nickName }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="密码" width="120">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.password }}</span>
+          <span>{{ scope.row.password }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="头像" width="260">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.photo }}</span>
+          <span>{{ scope.row.photo }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="创建日期" width="120">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.createDate }}</span>
+          <span>{{ scope.row.createDate }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作">

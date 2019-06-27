@@ -13,7 +13,6 @@ const tab = {
      state.openNav=state.openNav.filter(tab => tab.name !== index);
     },
     SET_NAV_Index: (state, Index) => {
-          console.log('SET_NAV_Index',Index);
       state.navIndex = Index;
     },
     SET_Router_State: (state, routerState) => {

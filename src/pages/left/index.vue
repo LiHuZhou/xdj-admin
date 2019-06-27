@@ -3,7 +3,6 @@
     <el-row class="tac">
       <el-col :span="12">
         <el-menu
-          default-active="2"
           :router="true"
           class="el-menu-vertical-demo"
           @open="handleOpen"
@@ -11,7 +10,7 @@
           v-for="(item,index) in menuList"
           :key="index"
         >
-          <el-submenu :index="index+''">
+          <el-submenu :index="item.title">
             <template slot="title">
               <i :class="item.icon"></i>
               <span>{{item.title}}</span>
@@ -22,6 +21,7 @@
                 :route="{name:citem.name}"
                 :data-name="citem.name"
                 @click="addTab($event)"
+                :class="$route.name==citem.name?'is-active is-opend':'no-active'"
               >{{citem.title}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -40,6 +40,14 @@ export default {
       menuList
     };
   },
+  mounted() {
+    if (this.$route.meta.title) {
+      this.$store.dispatch("tab/addNavFun", {
+        name: this.$route.name,
+        title: this.$route.meta.title
+      });
+    }
+  },
   methods: {
     handleOpen(key, keyPath) {},
     handleClose(key, keyPath) {},
@@ -56,5 +64,16 @@ export default {
 .el-row,
 .el-col {
   width: 200px;
+}
+.el-submenu.is-active {
+  background: #fff;
+}
+.el-menu-item.is-active {
+  background: skyblue;
+  color: #fff;
+}
+.el-menu-item.no-active {
+  background: #fff;
+  color: #303133;
 }
 </style>
